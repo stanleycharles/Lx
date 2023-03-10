@@ -1,1 +1,33 @@
-leeeeeegoooooo ! 
+/                        root
+/bin                     user binaries
+/sbin                    system binaries
+/etc                     configuration files
+/dev                     device files
+/proc                    process information
+/var                     variable files
+/tmp                     temporary files
+/usr                     user programs
+/home                    home directories
+/boot                    boot loader files
+/lib                     system libraries
+/opt                     optional add-on apps
+/mnt                     mount directory
+/media                   removable devices
+/srv                     service data
+
+cmatrix
+
+ps aux
+ps aux | less
+ps aux | grep xxxxx
+
+top
+btop
+htop
+
+kill 19879
+pkill xxxxx
+kill -9 process_id  (ult kill)
+
+echo $PATH
+/home/user/scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin…
