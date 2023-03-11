@@ -49,34 +49,52 @@ u - user = yourself
 g - group = can be people in the same project
 o - other = everyone on the system
 
--rwxrwxrwx
+
 drwxrwxrwx
 
--rwxr--r-- 0744 user class can read/write/execute; group class can read; other class can read
--rw-rw-r-- 0664 user class can read/write; group class can read/write; other class can read
--rwxrwxr-- 0774 user class can read/write/execute; group class can read/write/execute;
-other class can read
----------- 0000 None of the classes have permissions
--rwx------ 0700 user class can read/write/execute; group class has no permissions;
-other class has no permissions
--rwxrwxrwx 0777 All classes can read/write/execute
--rw-rw-rw 0666 All classes can read/write
--r-xr-xr-x 0555 All classes can read/execute
--r--r--r-- 0444 All classes can read
---wx-wx-wx 0333 All classes can write/execute
---w--w--w- 0222 All classes can write
----x--x--x 0111 All classes can execute
 
--rwxrwxrwx chmod 0777 filename; chmod -R 0777 dir All classes can read/write/execute
--rwxr--r-- chmod 0744 filename; chmod -R 0744 dir
-user can read/write/execute; all others can
-read
--rw-r--r-- chmod 0644 filename; chmod -R 0644 dir user class can read/write; all others can read
--rw-rw-rw- chmod 0666 filename' chmod -R 0666 dir All classes can read/write
+-rwxr--r--               0744              user class can read/write/execute
+                                           group class can read 
+                                           other class can read
+                                           
+-rw-rw-r--               0664              user class can read/write
+                                           group class can read/write
+                                           other class can read
+                                           
+-rwxrwxr--               0774              user class can read/write/execute
+                                           group class can read/write/execute
+                                           other class can read
+                                           
+----------               0000              None of the classes have permissions
+
+-rwx------               0700              user class can read/write/execute
+                                           group class has no permissions
+                                           other class has no permissions
+                                           
+-rwxrwxrwx               0777              All classes can read/write/execute
+-rw-rw-rw                0666              All classes can read/write
+-r-xr-xr-x               0555              All classes can read/execute
+-r--r--r--               0444              All classes can read
+--wx-wx-wx               0333              All classes can write/execute
+--w--w--w-               0222              All classes can write
+---x--x--x               0111              All classes can execute
 
 
-Type User Group Everyone else
-      rwx   rwx           rwx
+-rwxrwxrwx               chmod 0777 filename
+                         chmod -R 0777 dir            All classes can read/write/execute
+                         
+-rwxr--r--               chmod 0744 filename
+                         chmod -R 0744 dir            user can read/write/execute; all others can read
+                         
+-rw-r--r--               chmod 0644 filename
+                         chmod -R 0644 dir            user class can read/write; all others can read
+                         
+-rw-rw-rw-               chmod 0666 filename 
+                         chmod -R 0666 dir            All classes can read/write
+
+
+Type     User       Group      Everyone else
+          rwx         rwx                rwx
  
  read=4    write=2    execute=1
 
@@ -84,6 +102,7 @@ Type User Group Everyone else
 -R                      recursively descend through the directory structure and change the modes
 
 chmod 755 file1       or        chmod u=rwx , go=rx file1
+
 
 uname –a
 cat /etc/redhat-release or os-release
