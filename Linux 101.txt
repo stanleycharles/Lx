@@ -356,9 +356,13 @@ SAN (Storage Area Network)            Storage attached through iSCSI or fiber ca
 NAS (Network Attached Storage)        Storage attached over network (TCP/IP)
                                       E.g. Samba, NFS etc.
 
-
+ssh ????
+scp ????
 crontab ????
 swap ????
+ftp ???
+ssl, certs ????
+config network, hosts ????
 
                                                     
                                                     
