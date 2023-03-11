@@ -49,8 +49,21 @@ u - user = yourself
 g - group = can be people in the same project
 o - other = everyone on the system
 
+0               no permission                ---            
+1               execute                      --x              
+2               write                        -w-
+3               execute + write              -wx
+4               read                         r--
+5               read + execute               r-x
+6               read + write                 rw-
+7               read + write + execute       rwx
 
-drwxrwxrwx
+chmod 764       7 rwx (user)
+                6 rw- (group)
+                4 r-- (other / public)
+
+
+drwxrwxrwx      directory
 
 
 -rwxr--r--               0744              user class can read/write/execute
@@ -107,6 +120,91 @@ chmod 755 file1       or        chmod u=rwx , go=rx file1
 uname –a
 cat /etc/redhat-release or os-release
 dmidecode
+
+
+acl                     setfacl -m "u:user:permissions" /path/to/file        (user)
+                        setfacl -m "g:group:permissions" /path/to/file       (group)
+                        setfacl -m u:iafzal:rwx test/seinfeld.txt            (exemple)
+                        
+ 
+ 
+Filters                                        Text Processors Commands
+
+
+cut filename                                   Does not work
+cut --version                                  Check version
+cut –c1 filename                               List one character
+cut –c1,2,4                                    Pick and chose character
+cut –c1-3 filename                             List range of characters
+cut –c1-3,6-8 filename                         List specific range of characters
+cut –b1-3 filename                             List by byte size
+cut -d: -f 6 /etc/passwd                       List first 6th column separated by :
+cut -d: -f 6-7 /etc/passwd                     List first 6 and 7th column separated by :
+ls –l | cut –c2-4                              Only print user permissions of files/dir
+
+
+awk --version                                       Check version
+awk ‘{print $1}’ file                               List 1st field from a file
+ls –l | awk ‘{print $1,$3}’                         List 1 and 3rd field of ls –l output
+ls –l | awk ‘{print $NF}’                           Last field of the output
+awk '/Jerry/ {print}' file                          Search for a specific word
+awk -F: '{print $1}' /etc/passwd                    Ouput only 1st field of /etc/passwd
+echo "Hello Tom" | awk '{$2="Adam"; print $0}‘      Replace words field words
+cat file | awk '{$2=“Imran"; print $0}‘             Replace words field words
+awk 'length($0) > 15‘ file                          Get lines that have more than 15 byte size
+ls -l | awk '{if($9 == "seinfeld") print $0;}‘      Get the field matching seinfeld in /home/iafzal
+ls -l | awk '{print NF}‘                            Number of fields.
+
+
+grep –-version or grep --help                       Check version or help
+grep keyword file                                   Search for a keyword from a file
+grep –c keyword file                                Search for a keyword and count
+grep –i KEYword file                                Search for a keyword ignore case-sensitive
+grep –n keyword file                                Display the matched lines and their line numbers
+grep –v keyword file                                Display everything but keyword
+grep keyword file | awk ‘{print $1}’                Search for a keyword and then only give the 1st field
+ls –l | grep Desktop                                Search for a keyword and then only give the 1st field
+egrep –i “keyword|keyword2” file                    Search for 2 keywords.
+
+
+sort –-version or sort --help                       Check version or help
+sort file                                           Sorts file in alphabetical order
+sort –r file                                        Sort in reverse alphabetical order
+sort –k2 file                                       Sort by field number
+uniq file                                           Removes duplicates
+sort file | uniq                                    Always sort first before using uniq their line numbers
+sort file | uniq –c                                 Sort first then uniq and list count
+sort file | uniq –d                                 Only show repeated lines.
+
+
+wc –-version or wc --help                           Check version or help
+wc file                                             Check file line count, word count and byte count
+wc –l file                                          Get the number of lines in a file
+wc –w file                                          Get the number of words in a file
+wc –b file                                          Get the number of bytes in a file
+wc DIRECTORY                                        NOT allowed
+ls –l | wc -l                                       Number of files
+grep keyword | wc -l                                Number of keyword lines.
+
+
+• tar
+• gzip
+• gzip –d OR gunzip
+
+truncate –s 10 filename
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
