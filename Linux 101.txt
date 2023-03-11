@@ -20,22 +20,45 @@
 ..                       - parent directory (double period)
 ~                        - your home directory (tilde)
 
-cmatrix
+fun packages                                 cmatrix
+
+ps –e                                        Shows all running processes
+ps aux                                       Shows all running processes in BSD format
+ps –ef                                       Shows all running processes in full format listing (Most commonly used)
+ps –u                                        username = Shows all processes by username.
 
 ps aux
 ps aux | less
 ps aux | grep xxxxx
+ps uc 
+ps ug
 
 top
 btop
 htop
 
-kill 19879
-pkill xxxxx
-kill -9 process_id  (ult kill)
+pkill xxxxx                                         kill cmd
+killall                                             kill cmd
+kill 19879                                          kills process
+kill -9 process_id / PID  (ult kill)                kills (kills!)
+kill -STOP 2339                                     stops process 2339
+kill -CONT 2339                                     continues stopped process 2339
+kill -l                                             list the supported kill signals
+kill -1                                             Restart
+kill -2                                             Interrupt from the keyboard just like Ctrl C
+kill -9                                             Forcefully kill the process
+kill -15                                            Kill a process gracefully
+
+
 
 echo $PATH
 /home/user/scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin…
+
+
+configuration                           /etc/hostname                             change hostname
+                                        /etc/sysconfig/network                    change network (redhat)
+                                                         
+
 
 locate data.txt
 find / -name data.txt
@@ -196,22 +219,22 @@ grep keyword | wc -l                                Number of keyword lines.
 
 truncate –s 10 filename
 
-User Account Management                             useradd                      add user
-                                                                                 useradd -u 999 navin (999 = userID)
-                                                                                 useradd -u 1000 -g 500 tarunika
+User Account Management                  useradd                      add user
+                                                                      useradd -u 999 navin (999 = userID)
+                                                                      useradd -u 1000 -g 500 tarunika
                                                     
-                                                    id                           id soldier
-                                                                                 uid=1001(solider) gid=1001(solider) 
-                                                                                 groups=1001(solider),500(admins),501(webadmin),502(developers)
-                                                                                 context=root:system_r:unconfined_t:SystemLow-SystemHigh
+                                         id                           id soldier
+                                                                      uid=1001(solider) gid=1001(solider) 
+                                                                      groups=1001(solider),500(admins),501(webadmin),502(developers)
+                                                                      context=root:system_r:unconfined_t:SystemLow-SystemHigh
                                                                                  
 
-                                                    userdel                      delete user
-                                                    groupadd                     create group
-                                                    groupdel                     delete group
-                                                    usermod                      modify user attribute
-                                                                                 usermod -aG wheel USERNAME          Add the user to the wheel group
-                                                                                 usermod -aG docker docker                  
+                                         userdel                      delete user
+                                         groupadd                     create group
+                                         groupdel                     delete group
+                                         usermod                      modify user attribute
+                                                                      usermod -aG wheel USERNAME          Add the user to the wheel group
+                                                                     usermod -aG docker docker                  
 
 
 User Files                                          /etc/passwd                  This file has all user’s attributes
@@ -223,6 +246,67 @@ User Files                                          /etc/passwd                 
                                                                                  solider:x:505:505::/home/newusers:/bin/bash
                                                     
                                                     /etc/group                   All group and user group information 
+                                                    
+                                                    /etc/sudoers                 
+                                                    
+
+systemctl management                                systemctl start|stop|status servicename.service (firewalld)
+                                                    systemctl enable servicename.service
+                                                    systemctl restart|reload servicename.service
+                                                    systemctl list-units --all
+
+                                                    /etc/systemd/system/servicename.service               add a service under systemctl management
+ 
+                                                    systemctl poweroff
+                                                    systemctl halt
+                                                    systemctl reboot
+                                                    
+
+Creating NIC Bonding (redhat)                       modprobe bonding                                   Install bonding driver
+                                                    modinfo bonding                                    To list the bonding module info 
+                                                    vi /etc/sysconfig/network-scripts/ifcfg-bond0      Create Bond Interface File
+                                                    
+                                                    DEVICE=bond0
+                                                    TYPE=Bond
+                                                    NAME=bond0
+                                                    BONDING_MASTER=yes
+                                                    BOOTPROTO=none
+                                                    ONBOOT=yes
+                                                    IPADDR=192.168.1.80
+                                                    NETMASK=255.255.255.0
+                                                    GATEWAY=192.168.1.1
+                                                    BONDING_OPTS=”mode=5 miimon=100”
+                                                    
+                                                    vi /etc/sysconfig/network-scripts/ifcfg-enp0s3      Edit the First NIC File (enp0s3)
+                                                    
+                                                    TYPE=Ethernet
+                                                    BOOTPROTO=none
+                                                    DEVICE=enp0s3
+                                                    ONBOOT=yes
+                                                    HWADDR=”MAC from the ifconfig command”
+                                                    MASTER=bond0
+                                                    SLAVE=yes
+                                                    
+                                                    vi /etc/sysconfig/network-scripts/ifcfg-enp0s8       Create the Second NIC File (enp0s8) or Copy enp0s3
+                                                    
+                                                    TYPE=Ethernet
+                                                    BOOTPROTO=none
+                                                    DEVICE=enp0s8
+                                                    ONBOOT=yes
+                                                    HWADDR=”MAC from the ifconfig command”
+                                                    MASTER=bond0
+                                                    SLAVE=yes
+                                                    
+                                                    systemctl restart network                            Restart the Network Service
+                                                    
+                                                    ifconfig or ifconfig | more                          Test and verify the configuration
+                                                    
+                                                    cat /proc/net/bonding/bond0                          view bond interface settings, bonding mode & slave interface
+
+crontab ??????????????????????
+
+                                                    
+                                                    
                                                     
                                                     
   
