@@ -1,3 +1,41 @@
+Boot Process
+
+
+BIOS                    Basic Input and Output Setting (firmware interface)
+                        POST = Power-On Self-Test started
+
+MBR                     Master Boot Record Information saved in the first sector of a hard disk that indicates 
+                        where the GRUB2 is located so it can be loaded in computer RAM
+
+GRUB2                   Grand Unified Boot Loader v2, Loads Linux kernel
+                        /boot/grub2/grub.cfg
+
+Kernel                  Core of Operating System
+                        Loads required drivers from initrd.img
+                        Starts the first OS process (systemd)
+
+Systemd                 System Daemon (PID # 1)
+                        It then starts all the required processes
+                        Reads = /etc/systemd/system/default.target to bring the system to the run-level
+                        Total of 7 run-levels (0 thru 6)
+                                            
+System Run Level
+
+
+Main Run level
+0                       Shut down (or halt) the system
+1                       Single-user mode; usually aliased as s or S
+6                       Reboot the system
+
+Other Run levels
+2                       Multiuser mode without networking
+3                       Multiuser mode with networking
+5                       Multiuser mode with networking and GUI
+
+
+Directory
+
+
 /                        root
 /bin                     user binaries
 /sbin                    system binaries
@@ -19,6 +57,7 @@
 .                        - current directory (period)
 ..                       - parent directory (double period)
 ~                        - your home directory (tilde)
+
 
 fun packages                                 cmatrix
 
