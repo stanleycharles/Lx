@@ -196,6 +196,36 @@ grep keyword | wc -l                                Number of keyword lines.
 
 truncate –s 10 filename
 
+User Account Management                             useradd                      add user
+                                                                                 useradd -u 999 navin (999 = userID)
+                                                                                 useradd -u 1000 -g 500 tarunika
+                                                    
+                                                    id                           id soldier
+                                                                                 uid=1001(solider) gid=1001(solider) 
+                                                                                 groups=1001(solider),500(admins),501(webadmin),502(developers)
+                                                                                 context=root:system_r:unconfined_t:SystemLow-SystemHigh
+                                                                                 
+
+                                                    userdel                      delete user
+                                                    groupadd                     create group
+                                                    groupdel                     delete group
+                                                    usermod                      modify user attribute
+                                                                                 usermod -aG wheel USERNAME          Add the user to the wheel group
+                                                                                 usermod -aG docker docker                  
+
+
+User Files                                          /etc/passwd                  This file has all user’s attributes
+                                                                                 cat /etc/passwd | grep tarunika
+                                                                                 tarunika:x:1000:500::/home/tarunika:/bin/bash
+
+                                                    /etc/shadow                  This file contains encrypted user password and password policy
+                                                                                 cat /etc/passwd | grep solider
+                                                                                 solider:x:505:505::/home/newusers:/bin/bash
+                                                    
+                                                    /etc/group                   All group and user group information 
+                                                    
+                                                    
+  
 
 
 
