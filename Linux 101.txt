@@ -341,9 +341,20 @@ Creating NIC Bonding (redhat)                       modprobe bonding            
                                                     ifconfig or ifconfig | more                          Test and verify the configuration
                                                     
                                                     cat /proc/net/bonding/bond0                          view bond interface settings, bonding mode & slave interface
-                                                    
-                                                    
+                                                                                                 
 
+Disk Partition                        df
+                                      fdisk 
+
+
+Local Storage                         RAM, HDD, SSD, etc.
+
+DAS (Direct Attached Storage)         CD/DVD, USB flash drive, external disk directly attached with USB or other cables
+
+SAN (Storage Area Network)            Storage attached through iSCSI or fiber cable
+
+NAS (Network Attached Storage)        Storage attached over network (TCP/IP)
+                                      E.g. Samba, NFS etc.
 
 
 crontab ????
