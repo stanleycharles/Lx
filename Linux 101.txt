@@ -58,6 +58,7 @@ o - other = everyone on the system
 6               read + write                 rw-
 7               read + write + execute       rwx
 
+
 chmod 764       7 rwx (user)
                 6 rw- (group)
                 4 r-- (other / public)
@@ -109,10 +110,12 @@ drwxrwxrwx      directory
 Type     User       Group      Everyone else
           rwx         rwx                rwx
  
- read=4    write=2    execute=1
+         read=4      write=2         execute=1
+
 
 -f                      f- force (no error message is generated if the change is unsuccessful)
 -R                      recursively descend through the directory structure and change the modes
+
 
 chmod 755 file1       or        chmod u=rwx , go=rx file1
 
@@ -131,16 +134,16 @@ acl                     setfacl -m "u:user:permissions" /path/to/file        (us
 Filters                                        Text Processors Commands
 
 
-cut filename                                   Does not work
-cut --version                                  Check version
-cut –c1 filename                               List one character
-cut –c1,2,4                                    Pick and chose character
-cut –c1-3 filename                             List range of characters
-cut –c1-3,6-8 filename                         List specific range of characters
-cut –b1-3 filename                             List by byte size
-cut -d: -f 6 /etc/passwd                       List first 6th column separated by :
-cut -d: -f 6-7 /etc/passwd                     List first 6 and 7th column separated by :
-ls –l | cut –c2-4                              Only print user permissions of files/dir
+cut filename                                        Does not work
+cut --version                                       Check version
+cut –c1 filename                                    List one character
+cut –c1,2,4                                         Pick and chose character
+cut –c1-3 filename                                  List range of characters
+cut –c1-3,6-8 filename                              List specific range of characters
+cut –b1-3 filename                                  List by byte size
+cut -d: -f 6 /etc/passwd                            List first 6th column separated by :
+cut -d: -f 6-7 /etc/passwd                          List first 6 and 7th column separated by :
+ls –l | cut –c2-4                                   Only print user permissions of files/dir
 
 
 awk --version                                       Check version
