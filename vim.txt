@@ -1,1 +1,47 @@
-vim
+// Vim CMD //
+
+
+2 modes : Normal, Insert, Visual
+
+Normal 
+  i: insertion texte
+
+  a: avance un espace et insertion
+  o: saute une ligne vierge et insertion
+  I: insertion debut de ligne
+  A: insertion fin de ligne
+  O: monte une ligne vierge et insertion
+  5 + down: curseur saut de 5 lignes
+  5 + right: curseur se deplace a droite de 5 lignes
+  HJKL Nav
+  5 + K: curseur saut de 5 lignes 
+  u: rewind - 
+  ctl R: rewind +
+  w: saute les mots suivants
+  b: saute les mots en arriere 
+  ciw: delete le mot en entier en arriere + insertion ***
+  d0: select et delete la ligne entiere en arriere 
+  d$: select et delete la ligne entiere en avant 
+  yiw: le select au milieu d'un mot = copie le mot et le paste ailleurs
+  ci: delete mot a l'interieur des () + insertion
+  %: select the opening { -> redirect to the closing }
+  d%: delete le whole {}
+  gg: remonte le curseur au debut ligne 1 
+  shift + g: descent le curseur a la derniere ligne
+  :590: descent a la ligne 590
+  /: search
+
+Visual
+  v + right: select un block de texte vers la droite
+  v + left: select un bloc de texte vers la gauche
+  d: delete le bloc de texte
+  dd: delete the hole line
+  D: select et delete la fin de la ligne
+  y: copy le bloc de texte
+  p: paste le bloc de texte
+  cc: delete la ligne et insertion
+  r: select et replace les lettres
+  w: surligne le mot par etape
+  b: surligne le mot par etape en arriere
+  dw: delete totalement mot par mot
+  db: delete totalement mot par mot en arriere
