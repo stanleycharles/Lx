@@ -57,6 +57,7 @@ Directory
 .                        - current directory (period)
 ..                       - parent directory (double period)
 ~                        - your home directory (tilde)
+.. / .. ?
 
 
 fun packages                                 cmatrix
